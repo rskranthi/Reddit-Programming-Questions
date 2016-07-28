@@ -25,7 +25,7 @@ public class LinkedListLoopDetectionAndRemoval {
 	        list.head.next.next = new Node(15);
 	        list.head.next.next.next = new Node(4);
 	        list.head.next.next.next.next = new Node(10);
-	        list.printList(list.head);
+	        //list.printList(list.head);
 	        // Creating a loop for testing 
 	        list.head.next.next.next.next.next = list.head.next.next;
 	        list.detectAndRemoveLoop(list.head);
@@ -38,12 +38,13 @@ public class LinkedListLoopDetectionAndRemoval {
 	
 	public void detectAndRemoveLoop(Node node)
 	{
-		Node slow=node,fast=node;
+		Node slow=node,fast=node.next;
 		
 		//loop detection
 		while(fast!=null && fast.next!=null)
 		{
 			if(slow==fast)break;
+			
 			slow=slow.next;
 			fast=fast.next.next;
 		}
